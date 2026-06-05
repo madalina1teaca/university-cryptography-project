@@ -3,25 +3,27 @@
 #include "Transposition.h"
 
 /*
- * Sistem mixt de criptare.
- *
- * Se aplica doua metode succesiv:
- * 1. substitutia monoalfabetica;
- * 2. transpozitia.
- */
+=== Descriere ===
+- combină două tehnici suuccesive: confuzia și difuzia 
+- 1. substutuția
+- 2. transpoziția
+*/
 std::string mixedEncrypt(std::string text, int columns)
 {
+    // aplică transformarea de substituție a caracterelor
     std::string substituted = substitutionEncrypt(text);
+    // execută rearanjarea geometrică a pozițiilor
     std::string encrypted = transpositionEncrypt(substituted, columns);
 
     return encrypted;
 }
 
 /*
- * Decriptarea se face in ordine inversa:
- * 1. se inverseaza transpozitia;
- * 2. se inverseaza substitutia.
- */
+=== Descriere ===
+- decriptarea se face în ordinea inversă criptării
+- 1. transpoziția
+- 2. substituția
+*/
 std::string mixedDecrypt(std::string text, int columns)
 {
     std::string transposedBack = transpositionDecrypt(text, columns);
